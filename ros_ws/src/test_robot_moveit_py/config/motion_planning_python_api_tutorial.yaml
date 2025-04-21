@@ -1,0 +1,26 @@
+
+"moveit_controller_manager": "moveit_simple_controller_manager/MoveItSimpleControllerManager"
+
+planning_scene_monitor_options:
+  name: "planning_scene_monitor"
+  robot_description: "robot_description"
+  joint_state_topic: "/joint_states"
+  attached_collision_object_topic: "/planning_scene_monitor"
+  publish_planning_scene_topic: "/publish_planning_scene"
+  monitored_planning_scene_topic: "/monitored_planning_scene"
+  wait_for_initial_state_timeout: 10.0
+
+
+planning_pipelines:
+  namespace: "moveit_cpp"  # optional, default is ~
+  pipeline_names: ["ompl"]
+
+
+ompl_planning_parameters:
+  plan_request_params:
+    planning_attempts: 14
+    planning_time: 0.5
+    planning_pipeline: ompl
+    planner_id: RRTConnect
+    max_velocity_scaling_factor: 1.0
+    max_acceleration_scaling_factor: 1.0
